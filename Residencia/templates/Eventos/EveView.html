@@ -1,0 +1,94 @@
+{% extends "General/base.html"%}
+{% block title %} Bienvenido {% endblock %}
+{% block content %}
+
+
+<div class="container">
+  <!-- <leyend>{{e.nombre}}</leyend> -->
+  <h3>{{e.acronimo}}</h3>
+  <h4>{{e.nombre}}</h4>
+
+  <div class="container-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <table class="table table-user-information">
+            <tbody>
+              <tr>
+
+
+                <td>Topicos: <br></td>
+                <td>
+                  {% for i in e.id_topico.all %}
+
+                  {{i.topico}} ;
+
+                  {% endfor %}
+                  <br>
+                </td>
+              </tr>
+              <tr>
+
+                <td>Organizador: <br></td>
+                <td>{{e.organizador}}</td>
+              </tr>
+              <tr>
+
+                <td>Contacto: <br></td>
+                <td>
+                  {{e.organ_contact}}
+                </td>
+              </tr>
+              <tr>
+
+                <td>Estado del evento: <br></td>
+                <td>{{e.id_eve_edo.eve_edo}}</td>
+              </tr>
+              <tr>
+
+                <td>Tipo del evento: <br></td>
+                <td>{{e.id_teve.teve}}</td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+        <div class="col-md-6">
+          <table class="table table-user-information">
+            <tbody>
+              <tr>
+                <td>Fecha. <br></td>
+                <td>{{e.fecha}}</td>
+              </tr>
+              <tr>
+                <td>Pais:</td>
+                <td>{{e.pais}}</td>
+              </tr>
+              <tr>
+                <td>Ciudad: <br></td>
+                <td>{{e.ciudad}} <br></td>
+              </tr>
+              <tr>
+
+                <td>  Website: <br></td>
+                <td>{{e.website}} <br></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+  <div class="col-md-8">
+
+        <h3>Descripcion</h3>
+        <p>{{e.descr}}</p>
+      </div>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

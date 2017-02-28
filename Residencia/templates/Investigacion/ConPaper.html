@@ -1,0 +1,53 @@
+{% extends "General/base.html"%}
+{% block title %} Consulta de Papers {% endblock %}
+{% block content %}
+
+<div class="container">
+  <h3>Consulta Papers</h3>
+  <!-- <h5> {{mensaje}} </h5> -->
+</div>
+
+<div class="container-wrapper">
+  <div class="container">
+    <div class="row">
+
+      <div class="panel-heading"></div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Titulo</th>
+              <th>Lugar</th>
+              <th>Fecha</th>
+              <th>Resumen</th>
+              <th>Tipo de Doc.</th>
+              <th>Formato de Doc.</th>
+              <th>Topico</th>
+              <th>Keywords</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in mensaje %}
+              <tr>
+                <td> <a href="/paper/{{item.id}}">{{item.titulo}}</a></td>
+                <td> {{item.lugar}}</td>
+                <td> {{item.fecha}} </td>
+                <td> {{item.abstract}} </td>
+                <td> {{item.id_tdoc}} </td>
+                <td> {{item.id_fdoc}} </td>
+                <td> {{item.id_topico}} </td>
+                <td>
+                  {% for i in item.id_key.all %}
+
+                  {{i.keyword}}
+
+                  {% endfor %}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

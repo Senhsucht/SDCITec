@@ -1,0 +1,48 @@
+{% extends "General/base.html"%}
+{% block title %} Bienvenido {% endblock %}
+{% block content %}
+
+<div class="container">
+  <h3>Consulta Papers</h3>
+  <!-- <h5> {{mensaje}} </h5> -->
+</div>
+
+<div class="container-wrapper">
+  <div class="container">
+    <div class="row">
+
+      <div class="panel-heading"></div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Acronimo</th>
+              <th>Lugar</th>
+              <th>Website</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in mensaje %}
+              <tr>
+                <td>
+                <a href="/eventos/{{item.id}}">
+                     {{item.nombre}}
+                </a>
+              </td>
+                <td> {{item.acronimo}} </td>
+                <td> {{item.ciudad}} , {{item.pais}} </td>
+                <td>
+                  <a href="http://{{item.website}}"> {{item.website}}
+                </a>
+              </td>
+                <td> {{item.fecha}} </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

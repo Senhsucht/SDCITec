@@ -1,0 +1,63 @@
+d-body{
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.top-bar{
+    background: none repeat scroll 0 0 #fff;
+    border-radius: 0 4px 4px 0;
+    padding-top: 1%;
+    width: 100%;
+}
+
+.n-project{
+    background: rgba(#04ac31, 0.86) none repeat scroll 0 0;
+    border-radius: 100px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 27px 10px 45px;
+    position: relative;
+}
+
+.view{
+    background: #009F2A;
+    border-radius: 100px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 10px;
+    /*position: relative;*/
+}
+
+.close{
+  background: #CF0000;
+  border-radius: 100px;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 10px;
+  /*position: relative;*/
+}
+
+.navbar-login
+{
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size
+{
+    font-size: 87px;
+}

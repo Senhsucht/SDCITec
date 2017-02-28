@@ -1,0 +1,135 @@
+{% extends "General/base.html"%}
+{% block title %} Registro de Eventos {% endblock %}
+{% block content %}
+
+<div class="container">
+<legend>Nuevo Evento</legend>
+  <!-- <h5> {{mensaje}} </h5> -->
+</div>
+
+<div class="container-wrapper">
+  <div class="container">
+    <div class="row">
+
+<form class="form-horizontal" action="/nuevoevento/" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+<fieldset>
+
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">Nombre del evento</label>
+    <div class="col-md-4">
+    <input id="nombre" name="nombre" type="text" placeholder="nombre" class="form-control input-md" required="" maxlength="250">
+
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">Acronimo</label>
+    <div class="col-md-4">
+    <input id="acronimo" name="acronimo" type="text" placeholder="acronimo" class="form-control input-md" required="" maxlength="25">
+
+    </div>
+  </div>
+
+  <!-- Textarea -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textarea">Descripcion del evento</label>
+    <div class="col-md-4">
+      <textarea class="form-control" id="descr" name="descr" placeholder="Descripcion"></textarea>
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">Website</label>
+    <div class="col-md-4">
+    <input id="website" name="website" type="text" placeholder="website" class="form-control input-md" required="" maxlength="100">
+
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">Ciudad</label>
+    <div class="col-md-4">
+    <input id="ciudad" name="ciudad" type="text" placeholder="ciudad" class="form-control input-md" required="" maxlength="100">
+
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">Pais</label>
+    <div class="col-md-4">
+      <input id="pais" name="pais" type="text" placeholder="pais" class="form-control input-md" required="" maxlength="100">
+
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="fecha">Fecha</label>
+    <div class="col-md-4">
+      <input id="fecha" name="fecha" type='text' placeholder="YYYY-MM-DD" class="form-control" required="" maxlength="100">
+    </div>
+  </div>
+
+  <!-- Select Basic -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="selectbasic">Tipo de evento</label>
+    <div class="col-md-4">
+      <select id="teve" name="teve" class="form-control">
+        {% for i in teve %}
+  				<option value="{{i.id}}">{{i.teve}}</option>
+  			{% endfor %}
+      </select>
+    </div>
+  </div>
+
+  <!-- Select Basic -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="selectbasic">Topico</label>
+    <div class="col-md-4">
+      <select id="topico" name="topico" class="form-control">
+        {% for i in topico %}
+  				<option value="{{i.id}}">{{i.topico}}</option>
+  			{% endfor %}
+      </select>
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">Organizador</label>
+    <div class="col-md-4">
+    <input id="organizador" name="organizador" type="text" placeholder="organizador" class="form-control input-md" required="" maxlength="100">
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">Contacto del evento</label>
+    <div class="col-md-4">
+    <input id="contacto" name="contacto" type="text" placeholder="contacto" class="form-control input-md" required="" maxlength="100">
+    </div>
+  </div>
+
+  <!-- Button -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="singlebutton"></label>
+    <div class="col-md-4">
+      <button id="singlebutton" name="singlebutton" class="btn btn-primary">Registrar</button>
+    </div>
+  </div>
+
+
+</fieldset>
+</form>
+</div>
+</div>
+
+</div>
+{% endblock %}

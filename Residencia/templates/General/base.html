@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}  {% endblock %} </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- bootstrap-css -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	<!-- //bootstrap-css -->
+	<!-- Custom CSS -->
+	<link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css' />
+	<!-- font CSS -->
+	<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+	<!-- font-awesome icons -->
+	<link rel="stylesheet" href="{% static 'css/font.css' %}" type="text/css"/>
+	<link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+	<!-- //font-awesome icons -->
+	<script src="{% static 'js/jquery2.0.3.min.js' %}"></script>
+	<script src="{% static 'js/modernizr.js' %}"></script>
+	<script src="{% static 'js/jquery.cookie.js' %}"></script>
+	<script src="{% static 'js/screenfull.js' %}"></script>
+			<script>
+			$(function () {
+				$('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
+
+				if (!screenfull.enabled) {
+					return false;
+				}
+
+
+
+				$('#toggle').click(function () {
+					screenfull.toggle($('#container')[0]);
+				});
+			});
+			</script>
+
+	<!-- charts -->
+	<script src="{% static 'js/raphael-min.js' %}"></script>
+	<script src="{% static 'js/morris.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'css/morris.css' %}">
+	<!-- //charts -->
+	<!--skycons-icons-->
+	<script src="{% static 'js/skycons.js'%}"></script>
+	<!--//skycons-icons-->
+
+	<!-- Archivos CSS -->
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+	<link href="{% static 'css/dashboard.css' %}" rel="stylesheet" media="screen">
+	<link rel="icon" href="{% static 'img/favicon.ico' %}">
+</head>
+
+<body class="dashboard-page">
+	<script>
+					var theme = $.cookie('protonTheme') || 'default';
+					$('body').removeClass (function (index, css) {
+							return (css.match (/\btheme-\S+/g) || []).join(' ');
+					});
+					if (theme !== 'default') $('body').addClass(theme);
+				</script>
+	<nav class="main-menu">
+		<ul>
+			<li>
+				<a href="/dashboard/">
+					<i class="fa fa-home nav_icon"></i>
+					<span class="nav-text">
+					Dashboard
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="/conusuario/">
+					<i class="icon-user nav-icon"></i>
+					<span class="nav-text">
+					Consulta de autores
+					</span>
+				</a>
+					</li>
+				</ul>
+			</li>
+			<li class="has-subnav">
+				<a href="javascript:;">
+				<i class="icon-book nav-icon"></i>
+				<span class="nav-text">
+				Investigaciones
+				</span>
+				<i class="icon-angle-right"></i><i class="icon-angle-down"></i>
+				</a>
+				<ul>
+					<li>
+						<a class="subnav-text" href="/altapaper/">Alta de Investigaciones</a>
+					</li>
+					<li>
+						<a class="subnav-text" href="/conpaper/">Consulta de Investigaciones</a>
+					</li>
+				</ul>
+			</li>
+			<li class="has-subnav">
+				<a href="javascript:;">
+				<i class="icon-calendar nav-icon"></i>
+				<span class="nav-text">
+				Eventos
+				</span>
+				<i class="icon-angle-right"></i><i class="icon-angle-down"></i>
+				</a>
+				<ul>
+					<li>
+						<a class="subnav-text" href="/nuevoevento/">Alta de Eventos</a>
+					</li>
+					<li>
+						<a class="subnav-text" href="/coneventos/">Consulta de Eventos</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="cerrar">
+			<li>
+			<a href="/cerrar/">
+			<i class="icon-off nav-icon"></i>
+			<span class="nav-text">
+			Cerrar Sesion
+			</span>
+			</a>
+			</li>
+		</ul>
+	</nav>
+	<section class="wrapper scrollable">
+		<nav class="user-menu">
+			<a href="javascript:;" class="main-menu-access">
+			<i class="icon-proton-logo"></i>
+			<i class="icon-reorder"></i>
+			</a>
+		</nav>
+		<section class="title-bar">
+			<div class="logo">
+				<h1><a href="/dashboard"><img class="img-responsive" width="150" src="{% static 'img/SDCITec.png'%}" alt="" /></a></h1>
+			</div>
+
+			<div class="header-right">
+				<div class="profile_details_left">
+					<div class="header-right-left">
+						<!--notifications of menu start -->
+					</div>
+					<div class="profile_details">
+						<ul>
+							<li class="dropdown profile_details_drop">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+									<div class="profile_img">
+										<span class="prfil-img"><img class="img-circle" weigth="50" height="50" src="/media/{{uactivo.imagen}}" ></span>
+										<div class="clearfix"></div>
+									</div>
+								</a>
+								<ul class="dropdown-menu drp-mnu">
+									<li> <a href="/perfil/{{request.user.username}}"><i class="fa fa-user"></i> Perfil</a> </li>
+									<li> <a href="/edit/{{request.user.username}}"><i class="fa fa-cog"></i> Editar perfil</a> </li>
+									<li> <a href="/cerrar"><i class="fa fa-sign-out"></i> Cerrar Sesion</a> </li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</section>
+
+	<div class="main-grid">
+
+		{% block content %}
+
+
+		{% endblock %}
+
+	</div>
+		</section>
+
+	<!-- Modal -->
+	<div id="add_project" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header login-header">
+					<button type="button" class="close" data-dismiss="modal">x</button>
+					<h4 class="modal-title">Nueva Investigacion</h4>
+				</div>
+				<div class="modal-body">
+					<input id="titulo" name="titulo" type="text" placeholder="" class="form-control input-md" required="">
+					<input id="listkeywords" name="listkeywords" type="text" placeholder="" class="form-control input-md" >
+					<a class="btn btn-sm btn-success" data-toggle="modal" href="#nuevoKeyword"><span class="glyphicon glyphicon-plus"></span> </a>
+					<input id="lugar" name="lugar" type="text" placeholder="" class="form-control input-md" required="">
+					<input id="fecha" name="fecha" type="text" placeholder="YYYY-MM-DD" class="form-control input-md" required="">
+					<textarea class="form-control" id="abstract" name="abstract"></textarea>
+					<select id="tdoc" name="tdoc" class="form-control">
+						{% for i in tdoc %}
+						<option value="{{i.id}}">{{i.tdoc}}</option>
+						{% endfor %}
+					</select>
+					<select id="fdoc" name="fdoc" class="form-control">
+						{% for i in fdoc %}
+						<option value="{{i.id}}">{{i.fdoc}}</option>
+						{% endfor %}
+					</select>
+					<select id="topico" name="topico" class="form-control">
+						{% for i in topic %}
+						<option value="{{i.id}}">{{i.topico}}</option>
+						{% endfor %}
+					</select>
+					<input id="filebutton" name="filebutton" class="input-file" type="file">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="cancel" data-dismiss="modal">Close</button>
+					<button type="button" class="add-project" data-dismiss="modal">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Scripts JS -->
+	<script src="{% static 'js/dashboard.js' %}"></script>
+	<script src="{% static 'js/jquery.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/jquery.easing.min.js' %}"></script>
+
+</body>
+</html>

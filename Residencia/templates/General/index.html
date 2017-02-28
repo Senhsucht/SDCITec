@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+  <link href="{% static 'css/login.css' %}" rel="stylesheet" media="screen">
+  <script src="" charset="utf-8"></script>
+
+  <title>SDCI login</title>
+</head>
+<body>
+  {% if request.user.is_authenticated %}
+
+  <meta http-equiv="refresh" content="0; url=/dashboard">
+
+	{% else %}
+
+  <div class="container">
+
+    <nav class="navbar-custom" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+        <a href="/"><img width="150" height="35" src="{% static 'img/SDCITec.png' %}" alt="Sistema de Documentos Cientificos y Tecnologicos"></a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="wrap">
+                <p class="form-title">
+                    Iniciar Sesion</p>
+                <form class="login" role="form" action="/" method="POST">
+                  {% csrf_token %}
+
+                <input type="text" placeholder="Usuario" id="username" name="username" />
+                <input type="password" placeholder="Contraseña"  id="password"  name="password" />
+                <input type="submit" value="Iniciar Sesion" class="btn btn-success btn-sm" />
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="posted-by"> ¿No tienes una cuenta? <a href="/registrate">Registrate</a></div>
+</div>
+
+{% endif %}
+
+
+
+</body>
+</html>

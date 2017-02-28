@@ -1,0 +1,45 @@
+{% extends "General/base.html"%}
+{% block title %} Bienvenido {% endblock %}
+{% block content %}
+
+<div class="container">
+  <h3>Consulta Usuarios</h3>
+</div>
+
+<div class="container-wrapper">
+  <div class="container">
+    <div class="row">
+
+      <div class="panel-heading"></div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Foto</th>
+              <th>Usuario</th>
+              <th>Nombre</th>
+              <th>Edad</th>
+              <th>Institucion</th>
+              <th>Ciudad</th>
+              <th>Pais</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in mensaje %}
+              <tr>
+                <td> <a href="/perfil/{{item.user}}"> <img src="/media/{{item.imagen}}" class="img-responsive" alt="{{item.name}}" height="50" width="50"> </a> </td>
+                <td> {{item.user}}</td>
+                <td> {{item.ape_pat}} {{item.ape_mat}} , {{item.nombre}} </td>
+                <td> {{item.edad}} </td>
+                <td> {{item.institucion}} </td>
+                <td> {{item.ciudad}} </td>
+                <td> {{item.pais}} </td>
+
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

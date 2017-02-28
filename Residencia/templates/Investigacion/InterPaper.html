@@ -1,0 +1,84 @@
+{% extends "General/base.html"%}
+{% block title %} Bienvenido {% endblock %}
+{% block content %}
+
+<div class="container">
+  <h3>{{p.titulo}}</h3>
+</div>
+
+<div class="container-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-user-information">
+          <tbody>
+            <tr>
+
+
+              <td>Autores: <br></td>
+              <td>
+                {% for i in a.id_autor.all %}
+
+                {{i.ape_pat}} {{i.ape_mat}}, {{i.nombre}} ;
+
+                {% endfor %}
+                <br>
+              </td>
+            </tr>
+            <tr>
+
+              <td>Lugar: <br></td>
+              <td>{{p.lugar}}</td>
+            </tr>
+            <tr>
+
+              <td>Keywords: <br></td>
+              <td>
+                {% for i in p.id_key.all %}
+
+                {{i.keyword}} ;
+
+                {% endfor %}
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+      <div class="col-md-6">
+        <table class="table table-user-information">
+          <tbody>
+            <tr>
+              <td>Tipo de Doc. <br></td>
+              <td>{{p.id_tdoc.tdoc}}</td>
+            </tr>
+            <tr>
+              <td>Topico:</td>
+              <td>{{p.id_topico.topico}}</td>
+            </tr>
+            <tr>
+              <td>Fecha: <br></td>
+              <td>{{p.fecha}} <br></td>
+            </tr>
+            <tr>
+
+              <td>  Tipo de Formato: <br></td>
+              <td>{{p.id_fdoc.fdoc}} <br></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+<div class="col-md-8">
+
+      <h3>Abstract</h3>
+      <p>{{p.abstract}}</p>
+      <a href="{{p.docfile}}" class="btn btn-success"><span class="glyphicon glyphicon-cloud-download"></span> Descargar investigacion</a>
+    </div>
+
+    </div>
+
+
+  </div>
+</div>
+{% endblock %}

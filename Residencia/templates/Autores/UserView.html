@@ -1,0 +1,148 @@
+{% extends "General/base.html"%}
+{% block title %} Bienvenido {% endblock %}
+{% block content %}
+{% load staticfiles %}
+
+<link href="{% static 'css/profile.css' %}" rel="stylesheet" media="screen">
+<div class="col-lg-12 col-sm-12">
+  <div class="card hovercard">
+    <div class="card-background">
+      <img class="card-bkimg" alt="" src="/media/{{uv.imagen}}">
+    </div>
+    <div class="useravatar">
+      <img alt="" src="/media/{{uv.imagen}}">
+    </div>
+    <div class="card-info"> <span class="card-title">{{uv.ape_pat}} {{uv.ape_mat}} , {{uv.nombre}}</span>
+
+    </div>
+  </div>
+  <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+    <div class="btn-group" role="group">
+      <button type="button" id="stars" class="btn btn-success" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        <div class="hidden-xs">Biografia</div>
+      </button>
+    </div>
+    <div class="btn-group" role="group">
+      <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+        <div class="hidden-xs">Investigaciones</div>
+      </button>
+    </div>
+    <div class="btn-group" role="group">
+      <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+        <div class="hidden-xs">Eventos</div>
+      </button>
+    </div>
+  </div>
+
+  <div class="well">
+    <div class="tab-content">
+      <div class="tab-pane fade in active" id="tab1">
+        <table class="table table-user-information">
+          <tbody>
+            <tr>
+              <td>Usuario:</td>
+              <td>{{uv.user.username}}</td>
+            </tr>
+            <tr>
+              <td>Nombre:</td>
+              <td>{{uv.ape_pat}} {{uv.ape_mat}} , {{uv.nombre}}</td>
+            </tr>
+            <tr>
+              <td>Edad:</td>
+              <td>{{uv.edad}}</td>
+            </tr>
+            <tr>
+              <tr>
+                <td>Ubicacion:</td>
+                <td>{{uv.ciudad}},{{uv.pais}}</td>
+              </tr>
+              <tr>
+                <td>Email:</td>
+                <td><a href="mailto:{{uv.email}}">{{uv.email}}</a></td>
+              </tr>
+
+            </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+      <div class="tab-pane fade in" id="tab2">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Titulo</th>
+              <th>Lugar</th>
+              <th>Fecha</th>
+              <th>Resumen</th>
+              <th>Tipo de Doc.</th>
+              <th>Formato de Doc.</th>
+              <th>Topico</th>
+              <th>Keywords</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in uinv %}
+              <tr>
+                <td> <a href="/paper/{{item.id}}">{{item.titulo}}</a></td>
+                <td> {{item.lugar}}</td>
+                <td> {{item.fecha}} </td>
+                <td> {{item.abstract}} </td>
+                <td> {{item.id_tdoc}} </td>
+                <td> {{item.id_fdoc}} </td>
+                <td> {{item.id_topico}} </td>
+                <td>
+                  {% for i in item.id_key.all %}
+
+                  {{i.keyword}}
+
+                  {% endfor %}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="tab-pane fade in" id="tab3">
+        <div class="panel-heading"></div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Acronimo</th>
+                <th>Lugar</th>
+                <th>Website</th>
+                <th>Fecha</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in ueve %}
+                <tr>
+                  <td>
+                  <a href="/eventos/{{item.id}}">
+                       {{item.nombre}}
+                  </a>
+                </td>
+                  <td> {{item.acronimo}} </td>
+                  <td> {{item.ciudad}} , {{item.pais}} </td>
+                  <td>
+                    <a href="http://{{item.website}}"> {{item.website}}
+                  </a>
+                </td>
+                  <td> {{item.fecha}} </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+
+<script src="{% static 'js/profile.js' %}"></script>
+
+{% endblock %}

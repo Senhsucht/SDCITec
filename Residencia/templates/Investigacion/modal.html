@@ -1,0 +1,57 @@
+{% extends "General/base.html"%}
+{% block title %} Bienvenido {% endblock %}
+{% block content %}
+
+<div class="container">
+  <h3>Consulta Papers</h3>
+  <!-- <h5> {{mensaje}} </h5> -->
+</div>
+
+<div class="container-wrapper">
+  <div class="container">
+    <div class="row">
+
+      <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#nuevoKeyword"><span class="glyphicon glyphicon-plus"></span> </button>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="nuevoKeyword" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class ="modal-dialog">
+    <div class="modal-content">
+
+          <div class="modal-header">
+            <!-- Form Name -->
+            <h4>Nuevo keyword</h4>
+          </div>
+
+          <div class="modal-body">
+            <form>
+              <fieldset>
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="keyword">Keyword</label>
+                  <div class="col-md-4">
+                  <input id="keyword" name="keyword" type="text" placeholder="" class="form-control input-md" required="">
+
+                  </div>
+                </div>
+
+                  <!-- Button (Double) -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="botonoes"></label>
+                  <div class="col-md-8">
+                    <button id="botonoes" name="botonoes" class="btn btn-success">Crear</button>
+                    <button id="cancelar" name="cancelar" data-dismiss="modal" class="btn btn-danger">Cancelar</button>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

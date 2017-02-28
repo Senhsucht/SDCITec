@@ -1,0 +1,164 @@
+{% extends "General/base.html"%}
+{% block title %} Registro de Paper {% endblock %}
+{% block content %}
+
+<div class="container">
+  <h3>Registro de Paper</h3>
+  <!-- <h5> {{mensaje}} </h5> -->
+</div>
+
+<div class="container-wrapper">
+  <div class="container">
+    <div class="row">
+
+<form class="form-horizontal" action="/altapaper/" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+<fieldset>
+
+<!-- Form Name -->
+<!-- <legend>Nuevo paper</legend> -->
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="titulo">Titulo del Paper</label>
+  <div class="col-md-4">
+  <input id="titulo" name="titulo" type="text" placeholder="" class="form-control input-md" required="">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="listkeywords">Keywords</label>
+  <div class="col-md-4">
+    <input id="listkeywords" name="listkeywords" type="text" placeholder="" class="form-control" />
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="lugar">Lugar</label>
+  <div class="col-md-4">
+  <input id="lugar" name="lugar" type="text" placeholder="" class="form-control input-md" required="">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="fecha">Fecha</label>
+  <div class="col-md-4">
+    <input id="fecha" name="fecha" type='text' placeholder="YYYY-MM-DD" class="form-control" required=""/>
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="abstract">Resumen</label>
+  <div class="col-md-4">
+    <textarea class="form-control" id="abstract" name="abstract"></textarea>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="tdoc">Tipo de documento</label>
+  <div class="col-md-4">
+    <select id="tdoc" name="tdoc" class="form-control">
+      {% for i in tdoc %}
+				<option value="{{i.id}}">{{i.tdoc}}</option>
+			{% endfor %}
+    </select>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="fdoc">Formato de documento</label>
+  <div class="col-md-4">
+    <select id="fdoc" name="fdoc" class="form-control">
+      {% for i in fdoc %}
+				<option value="{{i.id}}">{{i.fdoc}}</option>
+			{% endfor %}
+    </select>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="topico">Topico</label>
+  <div class="col-md-4">
+    <select id="topico" name="topico" class="form-control">
+      {% for i in topic %}
+        <option value="{{i.id}}">{{i.topico}}</option>
+      {% endfor %}
+    </select>
+  </div>
+</div>
+
+<!-- File Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="filebutton">Selecciona el archivo</label>
+  <div class="col-md-4">
+    <input id="filebutton" name="filebutton" class="input-file" type="file">
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <div class="col-md-4">
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Registrar</button>
+  </div>
+</div>
+
+
+</fieldset>
+</form>
+</div>
+</div>
+
+</div>
+
+<div class="modal fade" id="nuevoKeyword" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class ="modal-dialog">
+    <div class="modal-content">
+
+          <div class="modal-header">
+            <!-- Form Name -->
+            <h4>Nuevo keyword</h4>
+          </div>
+
+          <div class="modal-body">
+            <form class="form-horizontal" action="/altapaper/" method="POST" >
+              {% csrf_token %}
+
+              <fieldset>
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="keyword">Keyword</label>
+                  <div class="col-md-4">
+                  <input id="keyword" name="keyword" type="text" placeholder="" class="form-control input-md" required="">
+
+                  </div>
+                </div>
+
+                  <!-- Button (Double) -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="botonoes"></label>
+                  <div class="col-md-8">
+                    <button id="botonoes" name="botonoes" class="btn btn-success">Crear</button>
+                    <button id="cancelar" name="cancelar" data-dismiss="modal" class="btn btn-danger">Cancelar</button>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+
+    </div>
+  </div>
+</div>
+
+<!--
+{% block keyword %}
+
+{% endblock %} -->
+
+{% endblock %}

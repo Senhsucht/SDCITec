@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+  <link href="{% static 'css/login.css' %}" rel="stylesheet" media="screen">
+
+  <a href="/" class="logoaccess"></a>
+  <title>Registro SDCI</title>
+</head>
+<body>
+
+
+  <div class="container">
+
+    <nav class="navbar-custom" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+        <a href="/"><img width="150" height="35" src="{% static 'img/SDCITec.png' %}" alt="Sistema de Documentos Cientificos y Tecnologicos"></a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="wrap">
+          <p class="form-title">
+            <p class="form-title">
+              Registro de Usuario</p>
+              <form class="registro" action="/registrate/" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {% if mensaje == ' ' %}
+
+                {% else %}
+
+                <div class="alert alert-danger">
+                  <strong>Ups!</strong> {{mensaje}}
+                </div>
+
+                {% endif %}
+
+                <input id="usuario" name="usuario" type="text" placeholder="Usuario" required="">
+                <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control input-md" required="">
+                <input id="ape_pat" name="ape_pat" type="text" placeholder="Apellido Pat" class="form-control input-md" required="">
+                <input id="ape_mat" name="ape_mat" type="text" placeholder="Apellido Mat" class="form-control input-md" required="">
+                <input id="edad" name="edad" type="number" placeholder="Edad" class="form-control input-md" required="" min="18">
+                <input id="email" name="email" type="text" placeholder="E-mail" class="form-control input-md" required="">
+                <input id="org" name="org" type="text" placeholder="Organización" class="form-control input-md" required="">
+                <input id="tel" name="tel" type="number" placeholder="Telefono" class="form-control input-md" required="" min="1">
+                <input id="direccion" name="direccion" type="text" placeholder="Direccion" class="form-control input-md" required="">
+                <input id="ciudad" name="ciudad" type="text" placeholder="Ciudad" class="form-control input-md" required="">
+                <input id="pais" name="pais" type="text" placeholder="Pais" class="form-control input-md" required="">
+                <input id="contra1" name="contra1" type="password" placeholder="Contraseña" class="form-control input-md" required="">
+                <input id="contra2" name="contra2" type="password" placeholder="Confirmar Contraseña" class="form-control input-md" required="">
+
+                <input type="submit" class="btn btn-success btn-sm" value="Registrate">
+
+
+                <p> ..</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+</html>

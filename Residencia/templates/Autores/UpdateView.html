@@ -1,0 +1,150 @@
+{% extends "General/base.html"%}
+{% block title %} Bienvenido {% endblock %}
+{% block content %}
+
+<div class="container">
+  <h3>{{uv.ape_pat}} {{uv.ape_mat}} , {{uv.nombre}}</h3>
+</div>
+
+<div class="container-wrapper">
+  <div class="container">
+    <div class="row">
+
+      <form  class="form-horizontal" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <fieldset>
+
+          <h3>Usuario: {{uv.user.username}}</h3>
+          <div>
+            <div class="col-md-2">
+
+              <img src="/media/{{uv.imagen}}" alt="{{uv.user.username}}" class="img-responsive" alt="{{item.name}}" height="150" width="150"></td>
+            </div>
+
+            <div class="col-md-8">
+
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Nombre</label>
+                <div class="col-md-4">
+                  <input id="nombre" name="nombre" type="text" class="form-control input-md" text="{{uv.nombre}}">
+                  <!-- <span class="help-block">help</span>   -->
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Apellido Paterno</label>
+                <div class="col-md-4">
+                  <input id="ape_pat" name="ape_pat" type="text" class="form-control input-md" text="{{uv.ape_pat}}">
+                  <!-- <span class="help-block">help</span>   -->
+                </div>
+              </div>
+
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Apellido Materno</label>
+                <div class="col-md-4">
+                  <input id="ape_mat" name="ape_mat" type="text" class="form-control input-md" text="{{uv.ape_mat}}">
+                  <!-- <span class="help-block">help</span>   -->
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Edad</label>
+                <div class="col-md-4">
+                  <input id="edad" name="edad" type="text" class="form-control input-md" text="{{uv.edad}}">
+                  <!-- <span class="help-block">help</span>   -->
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Direccion</label>
+                <div class="col-md-4">
+                  <input id="direc" name="direc" type="text" class="form-control input-md" text="{{uv.direccion}}">
+                  <!-- <span class="help-block">help</span>   -->
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Telefono</label>
+                <div class="col-md-4">
+                  <input id="tel" name="tel" type="text" class="form-control input-md" text="{{uv.tel}}">
+                  <!-- <span class="help-block">help</span>   -->
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Email</label>
+                <div class="col-md-4">
+                  <input id="email" name="email" type="text" class="form-control input-md" text="{{uv.email}}">
+                  <!-- <span class="help-block">help</span>   -->
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Institucion</label>
+                <div class="col-md-4">
+                  <input id="inst" name="inst" type="text" class="form-control input-md" text="{{uv.institucion}}">
+                  <!-- <span class="help-block">help</span>   -->
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Ciudad</label>
+                <div class="col-md-4">
+                  <input id="ciudad" name="ciudad" type="text" class="form-control input-md" text="{{uv.ciudad}}">
+                  <!-- <span class="help-block">help</span>   -->
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Pais</label>
+                <div class="col-md-4">
+                  <input id="pais" name="pais" type="text" class="form-control input-md" text="{{uv.pais}}">
+                  <!-- <span class="help-block">help</span>   -->
+                </div>
+              </div>
+
+              <br>
+
+              <!-- File Button -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="filebutton">Examinar</label>
+                <div class="col-md-4">
+                  <input id="filebutton" name="filebutton" class="input-file" type="file">
+                </div>
+              </div>
+
+
+              <!-- Button -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="singlebutton"></label>
+                <div class="col-md-4">
+                  <button id="singlebutton" name="singlebutton" class="btn btn-success">Guardar</button>
+                </div>
+              </div>
+
+
+              <!-- Button (Double) -->
+              <!-- <div class="form-group">
+              <label class="col-md-4 control-label" for="button1id"></label>
+              <div class="col-md-8">
+              <button id="button1id" name="button1id" class="btn btn-success">Guardar</button>
+              <button id="button2id" name="button2id" class="btn btn-danger" href="/aut/conusuario/" >Cancelar</button>
+            </div>
+          </div> -->
+        </div>
+
+      </div>
+    </fieldset>
+  </form>
+
+</div>
+</div>
+</div>
+{% endblock %}
